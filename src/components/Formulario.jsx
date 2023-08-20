@@ -18,12 +18,15 @@ function Formulario(){
 
       //Validaciones
       if (!nombre) erroresActuales.nombre = 'El nombre es requerido';
+      //Se valida el correo con expresiones regulares
       if (!correo) {
         erroresActuales.correo = 'El correo es requerido';
       } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(correo)) {
         erroresActuales.correo = 'El correo no es válido';
       }
+      // Se valida que la contraseña tenga más de 6 digitos
       if (!contra) erroresActuales.contra = 'La contraseña es requerida';
+      if (contra.length < 6) erroresActuales.contra = 'La contraseña debe tener al menos 6 caracteres';
 
       //Agregamos al useState el objeto de errores
       setErrores(erroresActuales);
